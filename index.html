@@ -98,9 +98,11 @@
             var response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
             if(response==true){
             allItems.splice(userIndex,1)
-            displayItems(allItems)
+            localStorage.setItem("myApp",JSON.stringify(myNotes))
+            displayItems()
+            
             }else{
-                console("make your choice")
+                console("make your see ham")
             }                              
             }        
 
@@ -112,7 +114,9 @@
                 quantity: editQuantity.value,
             }
             allItems.splice(userIndex,1,newDetails) 
-            displayItems(allItems)
+            localStorage.setItem("myApp",JSON.stringify(myNotes))
+            displayItems()
+            
             alert("UPDATED SUCCESSFULLY")
             }
             </script>
