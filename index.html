@@ -59,7 +59,7 @@
         if (localStorage.combApp){
         myZomb = JSON.parse(localStorage.getItem("myApp"))
         }           
-            function addItems(){ 
+            addItems=()=>{ 
                 var item = {
                     name: itemName.value,
                     price: itemPrice.value,
@@ -71,7 +71,7 @@
                 }
 
 
-                function displayItems(){
+            displayItems=()=>{
                 // alert("izz working")
                 itemName.value= "" 
                 itemPrice.value= "" 
@@ -98,30 +98,26 @@
                 }
                 }
 
-                function deleteItem(userIndex){             
-                var response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
-                if(response==true){
+    function deleteItem(userIndex){             
+        var response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
+            if(response==true){
                 allItems.splice(userIndex,1)
-                localStorage.setItem("myApp",JSON.stringify(myZomb))
-                    
-                
+                localStorage.setItem("myApp",JSON.stringify(myZomb))              
                 displayItems(allItems)
-                }else{
+            }else{
                     console("make your choice")
                 }                              
-                }        
+            }        
 
 
-            function saveItem(userIndex){            
-                var newDetails = {
+    function saveItem(userIndex){            
+        var newDetails = {
                     name: editName.value ,
                     price: editPrice.value,
                     quantity: editQuantity.value,
-                }
+            }
                 allItems.splice(userIndex,1,newDetails)
-                localStorage.setItem("myApp",JSON.stringify(myZomb))
-                 
-                
+                localStorage.setItem("myApp",JSON.stringify(myZomb))              
                 displayItems(allItems)
                 alert("UPDATED SUCCESSFULLY")
                 }
