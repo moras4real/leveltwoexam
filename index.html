@@ -54,10 +54,10 @@
             <div id="disp"></div>
 
     <script>
-        let allItems = []   
+        let allItems=[]   
         
         if (localStorage.myApp){
-        myZomb = JSON.parse(localStorage.getItem("myApp"))
+            allItems = JSON.parse(localStorage.getItem("myApp"))
         }           
             addItems=()=>{ 
                 var item = {
@@ -82,7 +82,8 @@
                 disp.innerHTML += ""
                 myTable.innerHTML = ""  
 
-                for (var index = 0; index < allItems.length; index++){              
+                for (var index = 0; index < allItems.length; index++){ 
+                                 
                     myTable.innerHTML += `
                     <tr>
                         <td>${index +1}</td>
@@ -95,6 +96,8 @@
                         </td>
                     </tr>               
                     `
+                    localStorage.setItem("myApp",JSON.stringify(allItems))              
+                    displayItems(allItems)
                 }
                 }
 
@@ -102,7 +105,7 @@
         let response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
             if(response==true){
                 allItems.splice(userIndex,1)
-                localStorage.setItem("myApp",JSON.stringify(myZomb))              
+                localStorage.setItem("myApp",JSON.stringify(allItems))              
                 displayItems(allItems)
             }else{
                     console("make your choice")
@@ -117,7 +120,7 @@
                     quantity: editQuantity.value,
             }
                 allItems.splice(userIndex,1,newDetails)
-                localStorage.setItem("myApp",JSON.stringify(myZomb))              
+                localStorage.setItem("myApp",JSON.stringify(allItems))              
                 displayItems(allItems)
                 alert("UPDATED SUCCESSFULLY")
                 }
