@@ -54,7 +54,7 @@
             <div id="disp"></div>
 
     <script>
-        var allItems = []   
+        let allItems = []   
         
         if (localStorage.combApp){
         myZomb = JSON.parse(localStorage.getItem("myApp"))
@@ -99,7 +99,7 @@
                 }
 
     function deleteItem(userIndex){             
-        var response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
+        let response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
             if(response==true){
                 allItems.splice(userIndex,1)
                 localStorage.setItem("myApp",JSON.stringify(myZomb))              
@@ -111,7 +111,7 @@
 
 
     function saveItem(userIndex){            
-        var newDetails = {
+        let newDetails = {
                     name: editName.value ,
                     price: editPrice.value,
                     quantity: editQuantity.value,
