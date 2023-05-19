@@ -54,72 +54,78 @@
             <div id="disp"></div>
 
     <script>
-    var allItems = []             
-          function addItems(){ 
-            var item = {
-                name: itemName.value,
-                price: itemPrice.value,
-                quantity: itemQuantity.value
-            }       
-            allItems.push(item)           
-            displayItems()
-            // console.log(item)
-            }
+        var allItems = []   
+        
+        if (localStorage.combApp){
+        myZomb = JSON.parse(localStorage.getItem("myApp"))
+        }           
+            function addItems(){ 
+                var item = {
+                    name: itemName.value,
+                    price: itemPrice.value,
+                    quantity: itemQuantity.value
+                }       
+                allItems.push(item)           
+                displayItems()
+                // console.log(item)
+                }
 
 
-            function displayItems(){
-            // alert("izz working")
-            itemName.value= "" 
-            itemPrice.value= "" 
-            itemQuantity.value= "" 
-            editName.value= "" 
-            editPrice.value= "" 
-            editQuantity.value= "" 
-            disp.innerHTML += ""
-            myTable.innerHTML = ""  
+                function displayItems(){
+                // alert("izz working")
+                itemName.value= "" 
+                itemPrice.value= "" 
+                itemQuantity.value= "" 
+                editName.value= "" 
+                editPrice.value= "" 
+                editQuantity.value= "" 
+                disp.innerHTML += ""
+                myTable.innerHTML = ""  
 
-            for (var index = 0; index < allItems.length; index++){              
-                myTable.innerHTML += `
-                <tr>
-                    <td>${index +1}</td>
-                    <td>${allItems[index].name}</td>  
-                    <td>${allItems[index].price}</td>  
-                    <td>${allItems[index].quantity}</td>                
-                    <td>
-                        <button class="btn btn-light" onclick="deleteItem(${index})">Delete</button>
-                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editItem(${index})">Edit</button>                       
-                    </td>
-                </tr>               
-                `
-            }
-            }
+                for (var index = 0; index < allItems.length; index++){              
+                    myTable.innerHTML += `
+                    <tr>
+                        <td>${index +1}</td>
+                        <td>${allItems[index].name}</td>  
+                        <td>${allItems[index].price}</td>  
+                        <td>${allItems[index].quantity}</td>                
+                        <td>
+                            <button class="btn btn-light" onclick="deleteItem(${index})">Delete</button>
+                            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="editItem(${index})">Edit</button>                       
+                        </td>
+                    </tr>               
+                    `
+                }
+                }
 
-            function deleteItem(userIndex){             
-            var response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
-            if(response==true){
-            allItems.splice(userIndex,1)
-            localStorage.setItem("myApp",JSON.stringify(myNotes))
-            displayItems()
-            
-            }else{
-                console("make your see ham")
-            }                              
-            }        
+                function deleteItem(userIndex){             
+                var response=confirm("DO YOU WANT TO DELETE.....ARE YOU SURE?")
+                if(response==true){
+                allItems.splice(userIndex,1)
+                localStorage.setItem("myApp",JSON.stringify(myZomb))
+                    
+                
+                displayItems(allItems)
+                }else{
+                    console("make your choice")
+                }                              
+                }        
 
 
             function saveItem(userIndex){            
-            var newDetails = {
-                name: editName.value ,
-                price: editPrice.value,
-                quantity: editQuantity.value,
-            }
-            allItems.splice(userIndex,1,newDetails) 
-            localStorage.setItem("myApp",JSON.stringify(myNotes))
-            displayItems()
-            
-            alert("UPDATED SUCCESSFULLY")
-            }
-            </script>
+                var newDetails = {
+                    name: editName.value ,
+                    price: editPrice.value,
+                    quantity: editQuantity.value,
+                }
+                allItems.splice(userIndex,1,newDetails)
+                localStorage.setItem("myApp",JSON.stringify(myZomb))
+                 
+                
+                displayItems(allItems)
+                alert("UPDATED SUCCESSFULLY")
+                }
+    </script>
 
             </body>
 </html>
